@@ -1,3 +1,4 @@
+import 'package:expense_wise/utils/appvalidator.dart';
 import 'package:flutter/material.dart';
 
 class SignUpView extends StatelessWidget {
@@ -15,41 +16,7 @@ class SignUpView extends StatelessWidget {
     }
   }
 
-  String? _validateEmail(value) {
-    if (value!.isEmpty) {
-      return "Please enter an email";
-    }
-    RegExp emailRegex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
-    if (!emailRegex.hasMatch(value)) {
-      return "Please enter a valid email";
-    }
-    return null;
-  }
-
-  String? _validatePhoneNumber(value) {
-    if (value.isEmpty) {
-      return "Please enter a phone number";
-    }
-    if (value.length != 10) {
-      return "Please enter a 10 digit phone number";
-    }
-    return null;
-  }
-
-  String? _validatePassword(value) {
-    if (value.isEmpty) {
-      return "Please enter a password";
-    }
-
-    return null;
-  }
-
-  String? _validateUsername(value) {
-    if (value == null || value.isEmpty) {
-      return "Please enter a username";
-    }
-    return null;
-  }
+  var appValidator = AppValidator();
 
   @override
   Widget build(BuildContext context) {
@@ -82,7 +49,7 @@ class SignUpView extends StatelessWidget {
                 style: TextStyle(color: Colors.white),
                 autovalidateMode: AutovalidateMode.onUserInteraction,
                 decoration: _buildInputDecoration("Username", Icons.person),
-                validator: _validateUsername,
+                validator: appValidator.validateUsername,
               ),
               SizedBox(
                 height: 16.0,
@@ -92,7 +59,7 @@ class SignUpView extends StatelessWidget {
                 style: TextStyle(color: Colors.white),
                 autovalidateMode: AutovalidateMode.onUserInteraction,
                 decoration: _buildInputDecoration("Email", Icons.email),
-                validator: _validateEmail,
+                validator: appValidator.validateEmail,
               ),
               SizedBox(
                 height: 16.0,
@@ -102,7 +69,7 @@ class SignUpView extends StatelessWidget {
                 keyboardType: TextInputType.phone,
                 autovalidateMode: AutovalidateMode.onUserInteraction,
                 decoration: _buildInputDecoration("Phone Number", Icons.phone),
-                validator: _validatePhoneNumber,
+                validator: appValidator.validatePhoneNumber,
               ),
               SizedBox(
                 height: 16.0,
@@ -112,7 +79,7 @@ class SignUpView extends StatelessWidget {
                 keyboardType: TextInputType.phone,
                 autovalidateMode: AutovalidateMode.onUserInteraction,
                 decoration: _buildInputDecoration("Password", Icons.lock),
-                validator: _validatePassword,
+                validator: appValidator.validatePassword,
               ),
               SizedBox(
                 height: 40.0,
