@@ -1,4 +1,5 @@
 import 'package:expense_wise/Screens/sign_up.dart';
+import 'package:expense_wise/widgets/auth_gate.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'firebase_options.dart';
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
       //   useMaterial3: true,
       // ),
       debugShowCheckedModeBanner: false,
-      home: SignUpView(),
+      home: AuthGate(),
     );
   }
 }
