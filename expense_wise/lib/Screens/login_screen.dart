@@ -1,50 +1,36 @@
-import 'package:expense_wise/Screens/login_screen.dart';
-import 'package:expense_wise/services/auth_service.dart';
-import 'package:expense_wise/utils/appvalidator.dart';
+import 'package:expense_wise/Screens/sign_up.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter/material.dart';
+import '../services/auth_service.dart';
+import '../utils/appvalidator.dart';
 
-class SignUpView extends StatefulWidget {
-  SignUpView({super.key});
+class LoginView extends StatefulWidget {
+  LoginView({super.key});
 
   @override
-  State<SignUpView> createState() => _SignUpViewState();
+  State<LoginView> createState() => _LoginViewState();
 }
 
-class _SignUpViewState extends State<SignUpView> {
+class _LoginViewState extends State<LoginView> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-
-  final _userNameController = TextEditingController();
-
   final _emailController = TextEditingController();
-
-  final _phoneController = TextEditingController();
-
   final _passwordController = TextEditingController();
-
-  var authService = AuthService();
   var isLoader = false;
-
+  var authService = AuthService();
   Future<void> _submitForm() async {
     if (_formKey.currentState!.validate()) {
       setState(() {
         isLoader = true;
       });
       var data = {
-        "username": _userNameController.text,
         "email": _emailController.text,
-        "phone": _phoneController.text,
         "password": _passwordController.text,
       };
 
-  await authService.createUser(data, context);
+      await authService.login(data, context);
       setState(() {
         isLoader = false;
       });
-      // ScaffoldMessenger.of(_formKey.currentContext!).showSnackBar(
-      //   const SnackBar(
-      //     content: Text("Form submitted successfully!"),
-      //   ),
-      // );
     }
   }
 
@@ -65,7 +51,7 @@ class _SignUpViewState extends State<SignUpView> {
               SizedBox(
                 width: 250,
                 child: Text(
-                  "Create New Account",
+                  "Login Account",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.white,
@@ -74,18 +60,9 @@ class _SignUpViewState extends State<SignUpView> {
                   ),
                 ),
               ),
+
               SizedBox(
-                height: 40.0,
-              ),
-              TextFormField(
-                controller: _userNameController,
-                style: TextStyle(color: Colors.white),
-                autovalidateMode: AutovalidateMode.onUserInteraction,
-                decoration: _buildInputDecoration("Username", Icons.person),
-                validator: appValidator.validateUsername,
-              ),
-              SizedBox(
-                height: 16.0,
+                height: 50.0,
               ),
               TextFormField(
                 controller: _emailController,
@@ -95,17 +72,7 @@ class _SignUpViewState extends State<SignUpView> {
                 decoration: _buildInputDecoration("Email", Icons.email),
                 validator: appValidator.validateEmail,
               ),
-              SizedBox(
-                height: 16.0,
-              ),
-              TextFormField(
-                controller: _phoneController,
-                style: TextStyle(color: Colors.white),
-                keyboardType: TextInputType.phone,
-                autovalidateMode: AutovalidateMode.onUserInteraction,
-                decoration: _buildInputDecoration("Phone Number", Icons.phone),
-                validator: appValidator.validatePhoneNumber,
-              ),
+
               SizedBox(
                 height: 16.0,
               ),
@@ -130,10 +97,10 @@ class _SignUpViewState extends State<SignUpView> {
                   },
                   child: isLoader
                       ? Center(child: CircularProgressIndicator())
-                      : Text("Sign Up", style: TextStyle(
-                        color: Color.fromARGB(255, 1, 4, 40),
-                        fontSize: 20.0,
-                    ),
+                      : Text("Login", style: TextStyle(
+                    color: Color.fromARGB(255, 1, 4, 40),
+                    fontSize: 20.0,
+                  ),
                   ),
                 ),
               ),
@@ -144,11 +111,11 @@ class _SignUpViewState extends State<SignUpView> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => LoginView()),
+                    MaterialPageRoute(builder: (context) => SignUpView()),
                   );
                 },
                 child: Text(
-                  "Login",
+                  "Create New Account",
                   style: TextStyle(color: Colors.white, fontSize: 20.0),
                 ),
               )
