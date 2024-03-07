@@ -3,6 +3,8 @@ import 'package:expense_wise/services/auth_service.dart';
 import 'package:expense_wise/utils/appvalidator.dart';
 import 'package:flutter/material.dart';
 
+import 'dashboard.dart';
+
 class SignUpView extends StatefulWidget {
   SignUpView({super.key});
 
@@ -37,6 +39,10 @@ class _SignUpViewState extends State<SignUpView> {
       };
 
   await authService.createUser(data, context);
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => Dashboard()),
+      );
       setState(() {
         isLoader = false;
       });

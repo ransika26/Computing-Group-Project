@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter/material.dart';
 import '../services/auth_service.dart';
 import '../utils/appvalidator.dart';
+import 'dashboard.dart';
 
 class LoginView extends StatefulWidget {
   LoginView({super.key});
@@ -28,6 +29,7 @@ class _LoginViewState extends State<LoginView> {
       };
 
       await authService.login(data, context);
+
       setState(() {
         isLoader = false;
       });
