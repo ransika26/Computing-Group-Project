@@ -1,3 +1,7 @@
+<<<<<<< Updated upstream
+=======
+import 'package:expense_wise/widgets/add_transaction_form.dart';
+>>>>>>> Stashed changes
 import 'package:expense_wise/widgets/transaction_card.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -30,13 +34,39 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
+<<<<<<< Updated upstream
+=======
+  final userId = FirebaseAuth.instance.currentUser!.uid;
+
+  _dialogBuilder(BuildContext context) {
+    return showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            content: AddTransactionForm(),
+          );
+        });
+  }
+
+>>>>>>> Stashed changes
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         floatingActionButton: FloatingActionButton(
+<<<<<<< Updated upstream
           backgroundColor:Color.fromARGB(255, 1, 4, 40),
           onPressed: (() {}),
           child: Icon(Icons.add, color: Colors.white,),
+=======
+          backgroundColor: Color.fromARGB(255, 1, 4, 40),
+          onPressed: (() {
+            _dialogBuilder(context);
+          }),
+          child: Icon(
+            Icons.add,
+            color: Colors.white,
+          ),
+>>>>>>> Stashed changes
         ),
         appBar: AppBar(
           backgroundColor: Color.fromARGB(255, 1, 4, 40),
@@ -57,11 +87,23 @@ class _HomeScreenState extends State<HomeScreen> {
                       ))
           ],
         ),
+<<<<<<< Updated upstream
         body: Column(
           children: [
             HeroCard(),
             TransactionCard(),
           ],
+=======
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              HeroCard(
+                userId: userId,
+              ),
+              TransactionCard(),
+            ],
+          ),
+>>>>>>> Stashed changes
         ));
   }
 }

@@ -1,17 +1,18 @@
 class AppValidator {
+
   String? validateEmail(value) {
     if (value!.isEmpty) {
       return "Please enter an email";
     }
-    RegExp emailRegex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
-    if (!emailRegex.hasMatch(value)) {
+    RegExp emailRegExp = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
+    if (!emailRegExp.hasMatch(value)) {
       return "Please enter a valid email";
     }
     return null;
   }
 
   String? validatePhoneNumber(value) {
-    if (value.isEmpty) {
+    if (value!.isEmpty) {
       return "Please enter a phone number";
     }
     if (value.length != 10) {
@@ -21,7 +22,7 @@ class AppValidator {
   }
 
   String? validatePassword(value) {
-    if (value.isEmpty) {
+    if (value!.isEmpty) {
       return "Please enter a password";
     }
 
@@ -29,8 +30,15 @@ class AppValidator {
   }
 
   String? validateUsername(value) {
-    if (value == null || value.isEmpty) {
+    if (value!.isEmpty) {
       return "Please enter a username";
+    }
+    return null;
+  }
+
+  String? isEmptyCheck(value) {
+    if (value!.isEmpty) {
+      return "Please fill details";
     }
     return null;
   }
