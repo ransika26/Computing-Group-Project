@@ -1,11 +1,11 @@
-<<<<<<< Updated upstream
+
 import 'package:expense_wise/utils/icons_list.dart';
-=======
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:expense_wise/utils/icons_list.dart';
 import 'package:expense_wise/widgets/transaction_cards.dart';
 import 'package:firebase_auth/firebase_auth.dart';
->>>>>>> Stashed changes
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -13,10 +13,9 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 class TransactionCard extends StatelessWidget {
   TransactionCard({super.key});
 
-<<<<<<< Updated upstream
+
   var appIcons = AppIcons();
-=======
->>>>>>> Stashed changes
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -31,7 +30,7 @@ class TransactionCard extends StatelessWidget {
               )
             ],
           ),
-<<<<<<< Updated upstream
+
           ListView.builder(
               shrinkWrap: true,
               itemCount: 4,
@@ -106,16 +105,16 @@ class TransactionCard extends StatelessWidget {
                   ),
                 );
               })
-=======
+
           RecentTransactionList()
->>>>>>> Stashed changes
+
         ],
       ),
     );
   }
 }
-<<<<<<< Updated upstream
-=======
+
+
 
 class RecentTransactionList extends StatelessWidget {
   RecentTransactionList({
@@ -160,4 +159,4 @@ class RecentTransactionList extends StatelessWidget {
         });
   }
 }
->>>>>>> Stashed changes
+

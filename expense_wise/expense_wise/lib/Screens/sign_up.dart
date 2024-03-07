@@ -31,18 +31,19 @@ class _SignUpViewState extends State<SignUpView> {
       setState(() {
         isLoader = true;
       });
+
       var data = {
         "username": _userNameController.text,
         "email": _emailController.text,
         "phone": _phoneController.text,
         "password": _passwordController.text,
+        'remainingAmount': 0,
+        'totalCredit': 0,
+        'totalDebit': 0,
       };
 
-  await authService.createUser(data, context);
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => Dashboard()),
-      );
+      await authService.createUser(data, context);
+
       setState(() {
         isLoader = false;
       });

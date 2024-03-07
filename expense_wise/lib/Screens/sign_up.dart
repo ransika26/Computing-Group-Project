@@ -42,16 +42,15 @@ class _SignUpViewState extends State<SignUpView> {
         'totalDebit': 0,
       };
 
-<<<<<<< Updated upstream
+
   await authService.createUser(data, context);
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => Dashboard()),
       );
-=======
+
       await authService.createUser(data, context);
 
->>>>>>> Stashed changes
       setState(() {
         isLoader = false;
       });

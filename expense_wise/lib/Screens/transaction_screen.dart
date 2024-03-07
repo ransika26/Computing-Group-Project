@@ -1,4 +1,4 @@
-<<<<<<< Updated upstream
+
 import 'package:flutter/material.dart';
 
 class TransactionScreen extends StatelessWidget {
@@ -8,7 +8,7 @@ class TransactionScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Text("Transaction"),
-=======
+
 import 'package:expense_wise/widgets/category_list.dart';
 import 'package:expense_wise/widgets/tab_bar_view.dart';
 import 'package:expense_wise/widgets/time_line_month.dart';

@@ -13,10 +13,10 @@ class AuthService{
         email: data['email'],
         password: data['password'],
       );
-<<<<<<< Updated upstream
-=======
+
+
       await db.addUser(data, context);
->>>>>>> Stashed changes
+
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(builder: ((context) => Dashboard())),
       );

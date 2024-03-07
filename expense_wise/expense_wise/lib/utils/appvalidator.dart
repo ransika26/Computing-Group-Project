@@ -1,5 +1,4 @@
 class AppValidator {
-  get emailRegExp => null;
 
   String? validateEmail(value) {
     if (value!.isEmpty) {
@@ -13,7 +12,7 @@ class AppValidator {
   }
 
   String? validatePhoneNumber(value) {
-    if (value.isEmpty) {
+    if (value!.isEmpty) {
       return "Please enter a phone number";
     }
     if (value.length != 10) {
@@ -23,7 +22,7 @@ class AppValidator {
   }
 
   String? validatePassword(value) {
-    if (value.isEmpty) {
+    if (value!.isEmpty) {
       return "Please enter a password";
     }
 
