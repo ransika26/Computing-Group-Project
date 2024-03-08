@@ -13,10 +13,7 @@ class AuthService{
         email: data['email'],
         password: data['password'],
       );
-
-
       await db.addUser(data, context);
-
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(builder: ((context) => Dashboard())),
       );

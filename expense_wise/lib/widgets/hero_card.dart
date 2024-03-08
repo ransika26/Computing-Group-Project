@@ -1,12 +1,5 @@
-<<<<<<< Updated upstream
-import 'package:flutter/material.dart';
+import 'dart:html';
 
-class HeroCard extends StatelessWidget {
-  const HeroCard({
-    super.key,
-  });
-
-=======
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
@@ -17,12 +10,11 @@ class HeroCard extends StatelessWidget {
   });
 
   final String userId;
-
+  final Stream<DocumentSnapshot> _usersStream =
+      FirebaseFirestore.instance.collection('users').doc().snapshots();
 
   @override
   Widget build(BuildContext context) {
-    final Stream<DocumentSnapshot> _usersStream =
-    FirebaseFirestore.instance.collection('users').doc(userId).snapshots();
     return StreamBuilder<DocumentSnapshot>(
       stream: _usersStream,
       builder:
@@ -56,7 +48,6 @@ class Cards extends StatelessWidget {
 
   final Map data;
 
->>>>>>> Stashed changes
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -77,11 +68,7 @@ class Cards extends StatelessWidget {
                       fontWeight: FontWeight.w600),
                 ),
                 Text(
-<<<<<<< Updated upstream
-                  "Rs 10000",
-=======
                   "Rs ${data['remainingAmount']}",
->>>>>>> Stashed changes
                   style: TextStyle(
                       fontSize: 40,
                       color: Colors.white,
@@ -102,22 +89,16 @@ class Cards extends StatelessWidget {
               children: [
                 CardOne(
                   color: Colors.green,
-<<<<<<< Updated upstream
-=======
                   heading: 'Credit',
                   amount: "${data['totalCredit']}",
->>>>>>> Stashed changes
                 ),
                 SizedBox(
                   width: 10,
                 ),
                 CardOne(
                   color: Colors.red,
-<<<<<<< Updated upstream
-=======
                   heading: 'Debit',
                   amount: "${data['totalDebit']}",
->>>>>>> Stashed changes
                 ),
               ],
             ),
@@ -132,11 +113,6 @@ class CardOne extends StatelessWidget {
   const CardOne({
     super.key,
     required this.color,
-<<<<<<< Updated upstream
-  });
-
-  final Color color;
-=======
     required this.heading,
     required this.amount,
   });
@@ -144,7 +120,6 @@ class CardOne extends StatelessWidget {
   final Color color;
   final String heading;
   final String amount;
->>>>>>> Stashed changes
 
   @override
   Widget build(BuildContext context) {
@@ -161,19 +136,11 @@ class CardOne extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-<<<<<<< Updated upstream
-                    "Income",
-                    style: TextStyle(color: color, fontSize: 15),
-                  ),
-                  Text(
-                    "Rs 100000",
-=======
                     heading,
                     style: TextStyle(color: color, fontSize: 15),
                   ),
                   Text(
                     "Rs ${amount}",
->>>>>>> Stashed changes
                     style: TextStyle(
                         color: color,
                         fontSize: 25,
@@ -185,13 +152,9 @@ class CardOne extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(6.0),
                 child: Icon(
-<<<<<<< Updated upstream
-                  Icons.arrow_upward_outlined,
-=======
                   heading == "Credit"
                       ? Icons.arrow_upward_outlined
                       : Icons.arrow_downward_outlined,
->>>>>>> Stashed changes
                   color: color,
                 ),
               )
@@ -201,8 +164,4 @@ class CardOne extends StatelessWidget {
       ),
     );
   }
-<<<<<<< Updated upstream
 }
-=======
-}
->>>>>>> Stashed changes
