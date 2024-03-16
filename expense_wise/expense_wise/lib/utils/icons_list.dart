@@ -20,10 +20,6 @@ class AppIcons {
       "icon": FontAwesomeIcons.wifi,
     },
     {
-      "name": "Grocery",
-      "icon": FontAwesomeIcons.cartShopping,
-    },
-    {
       "name": "Electricity",
       "icon": FontAwesomeIcons.bolt,
     },
