@@ -1,3 +1,4 @@
+import 'package:expense_wise/widgets/time_line_month.dart';
 import 'package:flutter/material.dart';
 
 class TransactionScreen extends StatelessWidget {
@@ -6,7 +7,15 @@ class TransactionScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Text("Transaction"),
+      appBar: AppBar(
+        title: Text("Expense Summary"),
+      ),
+      body: Column(
+        children: [
+
+          TimeLineMonth(),
+        ],
+      ),
     );
   }
 }
