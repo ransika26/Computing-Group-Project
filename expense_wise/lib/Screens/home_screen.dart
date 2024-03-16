@@ -33,23 +33,28 @@ class _HomeScreenState extends State<HomeScreen> {
 
   final userId = FirebaseAuth.instance.currentUser!.uid;
 
-_dialogBuilder(BuildContext context){
-    return showDialog(context: context, builder: (context){
-      return AlertDialog(
-        content: AddTransactionForm(),
-      );
-    });
-}
+  _dialogBuilder(BuildContext context) {
+    return showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            content: AddTransactionForm(),
+          );
+        });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         floatingActionButton: FloatingActionButton(
-          backgroundColor:Color.fromARGB(255, 1, 4, 40),
+          backgroundColor: Color.fromARGB(255, 1, 4, 40),
           onPressed: (() {
             _dialogBuilder(context);
           }),
-          child: Icon(Icons.add, color: Colors.white,),
+          child: Icon(
+            Icons.add,
+            color: Colors.white,
+          ),
         ),
         appBar: AppBar(
           backgroundColor: Color.fromARGB(255, 1, 4, 40),
@@ -70,11 +75,15 @@ _dialogBuilder(BuildContext context){
                       ))
           ],
         ),
-        body: Column(
-          children: [
-            HeroCard(userId: 'userId',),
-            TransactionCard(),
-          ],
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              HeroCard(
+                userId: userId,
+              ),
+              TransactionCard(),
+            ],
+          ),
         ));
   }
 }
