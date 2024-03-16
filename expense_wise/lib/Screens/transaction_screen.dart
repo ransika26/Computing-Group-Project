@@ -1,3 +1,4 @@
+import 'package:expense_wise/widgets/category_list.dart';
 import 'package:expense_wise/widgets/time_line_month.dart';
 import 'package:flutter/material.dart';
 
@@ -12,8 +13,12 @@ class TransactionScreen extends StatelessWidget {
       ),
       body: Column(
         children: [
-
-          TimeLineMonth(),
+          TimeLineMonth(
+            onChanged: (String? value) {},
+          ),
+          CategoryList(
+            onChanged: (String? value) {},
+          )
         ],
       ),
     );
