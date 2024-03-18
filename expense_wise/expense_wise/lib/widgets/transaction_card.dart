@@ -44,7 +44,7 @@ class RecentTransactionList extends StatelessWidget {
             .collection('users')
             .doc(userId)
             .collection("transactions")
-            .orderBy('timestamp', descending: false)
+            .orderBy('timestamp', descending: true)
             .limit(20)
             .snapshots(),
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {

@@ -65,101 +65,103 @@ class _SignUpViewState extends State<SignUpView> {
           padding: const EdgeInsets.all(16.0),
           child: Form(
             key: _formKey,
-            child: Column(children: [
-              SizedBox(
-                height: 80.0,
-              ),
-              SizedBox(
-                width: 250,
-                child: Text(
-                  "Create New Account",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 25.0,
-                    fontWeight: FontWeight.bold,
-                  ),
+            child: SingleChildScrollView(
+              child: Column(children: [
+                SizedBox(
+                  height: 80.0,
                 ),
-              ),
-              SizedBox(
-                height: 40.0,
-              ),
-              TextFormField(
-                controller: _userNameController,
-                style: TextStyle(color: Colors.white),
-                autovalidateMode: AutovalidateMode.onUserInteraction,
-                decoration: _buildInputDecoration("Username", Icons.person),
-                validator: appValidator.validateUsername,
-              ),
-              SizedBox(
-                height: 16.0,
-              ),
-              TextFormField(
-                controller: _emailController,
-                keyboardType: TextInputType.emailAddress,
-                style: TextStyle(color: Colors.white),
-                autovalidateMode: AutovalidateMode.onUserInteraction,
-                decoration: _buildInputDecoration("Email", Icons.email),
-                validator: appValidator.validateEmail,
-              ),
-              SizedBox(
-                height: 16.0,
-              ),
-              TextFormField(
-                controller: _phoneController,
-                style: TextStyle(color: Colors.white),
-                keyboardType: TextInputType.phone,
-                autovalidateMode: AutovalidateMode.onUserInteraction,
-                decoration: _buildInputDecoration("Phone Number", Icons.phone),
-                validator: appValidator.validatePhoneNumber,
-              ),
-              SizedBox(
-                height: 16.0,
-              ),
-              TextFormField(
-                controller: _passwordController,
-                style: TextStyle(color: Colors.white),
-                keyboardType: TextInputType.phone,
-                autovalidateMode: AutovalidateMode.onUserInteraction,
-                decoration: _buildInputDecoration("Password", Icons.lock),
-                validator: appValidator.validatePassword,
-              ),
-              SizedBox(
-                height: 40.0,
-              ),
-              SizedBox(
-                height: 50,
-                width: double.infinity,
-                child: ElevatedButton(
-                  style:
-                  ElevatedButton.styleFrom(backgroundColor: Colors.white),
-                  onPressed: (){ isLoader ? print("Loading"): _submitForm();
-                  },
-                  child: isLoader
-                      ? Center(child: CircularProgressIndicator())
-                      : Text("Sign Up", style: TextStyle(
-                        color: Color.fromARGB(255, 1, 4, 40),
-                        fontSize: 20.0,
+                SizedBox(
+                  width: 250,
+                  child: Text(
+                    "Create New Account",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 25.0,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
-              ),
-              SizedBox(
-                height: 20.0,
-              ),
-              TextButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => LoginView()),
-                  );
-                },
-                child: Text(
-                  "Login",
-                  style: TextStyle(color: Colors.white, fontSize: 20.0),
+                SizedBox(
+                  height: 40.0,
                 ),
-              )
-            ]),
+                TextFormField(
+                  controller: _userNameController,
+                  style: TextStyle(color: Colors.white),
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  decoration: _buildInputDecoration("Username", Icons.person),
+                  validator: appValidator.validateUsername,
+                ),
+                SizedBox(
+                  height: 16.0,
+                ),
+                TextFormField(
+                  controller: _emailController,
+                  keyboardType: TextInputType.emailAddress,
+                  style: TextStyle(color: Colors.white),
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  decoration: _buildInputDecoration("Email", Icons.email),
+                  validator: appValidator.validateEmail,
+                ),
+                SizedBox(
+                  height: 16.0,
+                ),
+                TextFormField(
+                  controller: _phoneController,
+                  style: TextStyle(color: Colors.white),
+                  keyboardType: TextInputType.phone,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  decoration: _buildInputDecoration("Phone Number", Icons.phone),
+                  validator: appValidator.validatePhoneNumber,
+                ),
+                SizedBox(
+                  height: 16.0,
+                ),
+                TextFormField(
+                  controller: _passwordController,
+                  style: TextStyle(color: Colors.white),
+                  keyboardType: TextInputType.phone,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  decoration: _buildInputDecoration("Password", Icons.lock),
+                  validator: appValidator.validatePassword,
+                ),
+                SizedBox(
+                  height: 40.0,
+                ),
+                SizedBox(
+                  height: 50,
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    style:
+                    ElevatedButton.styleFrom(backgroundColor: Colors.white),
+                    onPressed: (){ isLoader ? print("Loading"): _submitForm();
+                    },
+                    child: isLoader
+                        ? Center(child: CircularProgressIndicator())
+                        : Text("Sign Up", style: TextStyle(
+                          color: Color.fromARGB(255, 1, 4, 40),
+                          fontSize: 20.0,
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 20.0,
+                ),
+                TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => LoginView()),
+                    );
+                  },
+                  child: Text(
+                    "Login",
+                    style: TextStyle(color: Colors.white, fontSize: 20.0),
+                  ),
+                )
+              ]),
+            ),
           ),
         ));
   }
