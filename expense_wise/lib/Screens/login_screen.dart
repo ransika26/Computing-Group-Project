@@ -6,7 +6,7 @@ import '../utils/appvalidator.dart';
 import 'dashboard.dart';
 
 class LoginView extends StatefulWidget {
-  LoginView({super.key});
+  LoginView({Key?key});
 
   @override
   State<LoginView> createState() => _LoginViewState();

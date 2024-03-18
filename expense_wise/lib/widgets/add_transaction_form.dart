@@ -7,7 +7,7 @@ import 'package:uuid/uuid.dart';
 import '../utils/appvalidator.dart';
 
 class AddTransactionForm extends StatefulWidget {
-  const AddTransactionForm({super.key});
+  const AddTransactionForm({Key?key});
 
   @override
   State<AddTransactionForm> createState() => _AddTransactionFormState();
@@ -43,10 +43,9 @@ class _AddTransactionFormState extends State<AddTransactionForm> {
           .doc(user!.uid)
           .get();
 
-      int remainingAmount = userDoc['remainingAmount'];
-      int totalCredit = userDoc['totalCredit'];
-      int totalDebit = userDoc['totalDebit'];
-
+      int remainingAmount = (userDoc.data()!['remainingAmount'] ?? 0) as int;
+      int totalCredit = (userDoc.data()!['totalCredit'] ?? 0) as int;
+      int totalDebit = (userDoc.data()!['totalDebit'] ?? 0) as int;
       if (type == 'credit') {
         remainingAmount += amount;
         totalCredit += amount;
@@ -142,7 +141,7 @@ class _AddTransactionFormState extends State<AddTransactionForm> {
                 onChanged: (value) {
                   if (value != null) {
                     setState(() {
-                      type = value;
+                      type = 'value';
                     });
                   }
                 }),

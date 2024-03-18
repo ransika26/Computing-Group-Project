@@ -10,24 +10,24 @@ class UnboardingContent{
 List<UnboardingContent> contents=[
 
   UnboardingContent(
-    description:"pick your food from our menu\n      more than 35",
-    image :"images/screen1.png",
+    description:"select from \n    Best Menu  ",
+    image :"images/expense1.png",
 
-    title:"select from\n      Best Menu",
+    title:"Manage expenses\n      on-the-go",
   ),
 
   UnboardingContent(
-    description:"You can pay cash on delivery annd\n      Card payment is available",
-    image :"images/screen2.png",
+    description:"Take control of \n      your money",
+    image :"images/expense2.png",
 
-    title:"Easy and online payment",
+    title:"Effortlessly monitor your spending habits.",
   ),
 
   UnboardingContent(
-    description:"Delivery your food at\n      your Doorstep",
-    image :"images/screen1.png",
+    description:"Budget better,  \n     live smarter",
+    image :"images/expense3.png",
 
-    title:"Quick delivery at your Doorstep\n      Best Menu",
+    title:"Achieve financial peace\n      of mind",
   ),
 
 ];

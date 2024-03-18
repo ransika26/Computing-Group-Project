@@ -5,7 +5,7 @@ import 'package:intl/intl.dart';
 import '../utils/icons_list.dart';
 
 class CategoryList extends StatefulWidget {
-  const CategoryList({super.key, required this.onChanged});
+  const CategoryList({Key?key, required this.onChanged});
   final ValueChanged<String?> onChanged;
 
   @override

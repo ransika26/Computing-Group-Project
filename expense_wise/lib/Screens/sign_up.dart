@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'dashboard.dart';
 
 class SignUpView extends StatefulWidget {
-  SignUpView({super.key});
+  SignUpView({Key?key});
 
   @override
   State<SignUpView> createState() => _SignUpViewState();

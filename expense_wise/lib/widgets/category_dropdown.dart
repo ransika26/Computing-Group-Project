@@ -2,7 +2,7 @@ import 'package:expense_wise/utils/icons_list.dart';
 import 'package:flutter/material.dart';
 
 class CategoryDropDown extends StatelessWidget {
-  CategoryDropDown({super.key, this.cattype, required this.onChanged});
+  CategoryDropDown({Key?key, this.cattype, required this.onChanged});
 
   final String? cattype;
   final ValueChanged<String?> onChanged;

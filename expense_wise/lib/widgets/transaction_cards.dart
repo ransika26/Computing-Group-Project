@@ -7,7 +7,7 @@ import '../utils/icons_list.dart';
 
 class TransactionCards extends StatelessWidget {
   TransactionCards({
-    super.key,
+    Key?key,
     required this.data,
   });
 

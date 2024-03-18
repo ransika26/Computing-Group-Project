@@ -9,7 +9,7 @@ import 'login_screen.dart';
 //ignore_for_file: prefer_const_literals_to_create_immutables
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+  const HomeScreen({Key?key});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();

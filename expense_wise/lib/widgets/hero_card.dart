@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class HeroCard extends StatelessWidget {
   HeroCard({
-    super.key,
+    Key?key,
     required this.userId,
   });
 
@@ -41,7 +41,7 @@ class HeroCard extends StatelessWidget {
 
 class Cards extends StatelessWidget {
   const Cards({
-    super.key,
+    Key?key,
     required this.data,
   });
 
@@ -110,7 +110,7 @@ class Cards extends StatelessWidget {
 
 class CardOne extends StatelessWidget {
   const CardOne({
-    super.key,
+    Key? key,
     required this.color,
     required this.heading,
     required this.amount,
