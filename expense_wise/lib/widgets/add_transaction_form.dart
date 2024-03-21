@@ -13,6 +13,34 @@ class AddTransactionForm extends StatefulWidget {
   State<AddTransactionForm> createState() => _AddTransactionFormState();
 }
 
+
+Future<void> deleteTransaction(String transactionId, int amount, String type) async {
+  final user = FirebaseAuth.instance.currentUser;
+
+  final userDoc = await FirebaseFirestore.instance.collection('users').doc(user!.uid).get();
+
+  int remainingAmount = (userDoc.data()!['remainingAmount'] ?? 0) as int;
+  int totalCredit = (userDoc.data()!['totalCredit'] ?? 0) as int;
+  int totalDebit = (userDoc.data()!['totalDebit'] ?? 0) as int;
+
+  if (type == 'credit') {
+    remainingAmount -= amount;
+    totalCredit -= amount;
+  } else {
+    remainingAmount += amount;
+    totalDebit += amount;
+  }
+
+  await FirebaseFirestore.instance.collection('users').doc(user.uid).update({
+    "remainingAmount": remainingAmount,
+    "totalCredit": totalCredit,
+    "totalDebit": totalDebit,
+  });
+
+
+}
+
+
 class _AddTransactionFormState extends State<AddTransactionForm> {
   var type = "credit";
   var category = "Others";
@@ -58,12 +86,14 @@ class _AddTransactionFormState extends State<AddTransactionForm> {
       await FirebaseFirestore.instance
           .collection('users')
           .doc(user!.uid)
-          .update({
+          .update(
+          {
         "remainingAmount": remainingAmount,
         "totalCredit": totalCredit,
         "totalDebit": totalDebit,
         "updateAt": timestamp,
-      });
+      }
+      );
 
       var data = {
         "id": id,
@@ -76,6 +106,7 @@ class _AddTransactionFormState extends State<AddTransactionForm> {
         "remainingAmount": remainingAmount,
         "monthyear": monthyear,
         "category": category,
+        "userId": user.uid,
       };
 
       await FirebaseFirestore.instance
@@ -141,7 +172,7 @@ class _AddTransactionFormState extends State<AddTransactionForm> {
                 onChanged: (value) {
                   if (value != null) {
                     setState(() {
-                      type = 'value';
+                      type = 'debit';
                     });
                   }
                 }),
@@ -162,4 +193,8 @@ class _AddTransactionFormState extends State<AddTransactionForm> {
       ),
     );
   }
+
+
+
+
 }
