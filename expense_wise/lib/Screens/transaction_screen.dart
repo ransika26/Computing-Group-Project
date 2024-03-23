@@ -28,7 +28,8 @@ class _TransactionScreenState extends State<TransactionScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Expense Summary"),
+        title: Text("Expense Summary",style: TextStyle(color: Colors.white)),
+        backgroundColor: Color.fromARGB(255, 34, 34, 40),
       ),
       body: Column(
         children: [

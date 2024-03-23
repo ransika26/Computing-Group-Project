@@ -12,6 +12,7 @@ class NavBar extends StatelessWidget {
     return NavigationBar(
       selectedIndex: selectedIndex,
       onDestinationSelected: onDestinationSelected,
+      backgroundColor: Color.fromARGB(255, 28, 31, 16),
       indicatorColor: Color.fromARGB(255, 229, 0, 0),
       labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
       height: 60,
