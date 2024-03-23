@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../Screens/piechart.dart';
-
+import '../Screens/profile.dart';
 
 class NavBar extends StatelessWidget {
   const NavBar({Key? key, required this.selectedIndex, required this.onDestinationSelected});
@@ -26,7 +26,6 @@ class NavBar extends StatelessWidget {
           selectedIcon: Icon(Icons.explore, color: Colors.white),
           label: 'Transaction',
         ),
-        // New navigation destination for expenses with pie chart
         GestureDetector(
           onTap: () {
             navigateToPieChart(context);
@@ -37,6 +36,17 @@ class NavBar extends StatelessWidget {
             label: 'Expenses',
           ),
         ),
+        // New navigation destination for the profile page
+        GestureDetector(
+          onTap: () {
+            navigateToProfile(context);
+          },
+          child: NavigationDestination(
+            icon: Icon(Icons.person),
+            selectedIcon: Icon(Icons.person, color: Colors.white),
+            label: 'Profile',
+          ),
+        ),
       ],
     );
   }
@@ -45,5 +55,8 @@ class NavBar extends StatelessWidget {
     Navigator.of(context).push(MaterialPageRoute(builder: (context) => PieChartScreen()));
   }
 
-
+  // Function to navigate to the profile page
+  void navigateToProfile(BuildContext context) {
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => Profile()));
+  }
 }

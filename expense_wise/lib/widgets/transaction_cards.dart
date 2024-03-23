@@ -108,7 +108,7 @@ class TransactionCards extends StatelessWidget {
               icon: Icon(Icons.delete),
               onPressed: () async {
                 try {
-                  // Print the document ID before deletion
+                 
                   print('Deleting transaction with ID: ${data['id']}');
 
                   // Delete the transaction document from Firestore using its ID
@@ -123,7 +123,7 @@ class TransactionCards extends StatelessWidget {
                   // Call the deleteTransaction function passing the necessary parameters
                   await deleteTransaction(data['id'], data['amount'], data['type']);
                 } catch (e) {
-                  // Handle any errors that occur during deletion
+                  
                   print('Error deleting transaction: $e');
                 }
               },

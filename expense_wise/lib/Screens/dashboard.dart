@@ -1,4 +1,5 @@
 import 'package:expense_wise/Screens/home_screen.dart';
+import 'package:expense_wise/Screens/profile.dart';
 import 'package:expense_wise/Screens/transaction_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -19,8 +20,9 @@ class _DashboardState extends State<Dashboard> {
   var pageViewList = [
     HomeScreen(),
     TransactionScreen(),
-   
-    PieChartScreen()
+
+    PieChartScreen(),
+    Profile()
   ];
 
 
