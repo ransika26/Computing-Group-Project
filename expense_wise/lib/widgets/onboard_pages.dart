@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
 import 'package:expense_wise/widgets/auth_gate.dart';
 import 'package:expense_wise/widgets/contentmodel.dart';
 import 'package:expense_wise/widgets/widget_suppor.dart';
+import 'package:flutter/material.dart';
 
 class Onboard extends StatefulWidget {
   const Onboard({Key? key}) : super(key: key);
@@ -43,25 +43,27 @@ class _OnboardState extends State<Onboard> {
               itemBuilder: (_, i) {
                 return Padding(
                   padding: EdgeInsets.only(top: 40.0, left: 20.0, right: 20.0),
-                  child: Column(
-                    children: [
-                      Image.asset(
-                        contents[i].image,
-                        height: 450,
-                        width: MediaQuery.of(context).size.width ,
-                        fit: BoxFit.fill,
-                      ),
-                      SizedBox(height: 40.0),
-                      Text(
-                        contents[i].title,
-                        style: AppWidget.HeadLineTextFieldStyle(),
-                      ),
-                      SizedBox(height: 20.0),
-                      Text(
-                        contents[i].description,
-                        style: AppWidget.LightTextFieldStyle(),
-                      )
-                    ],
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        Image.asset(
+                          contents[i].image,
+                          height: 450,
+                          width: MediaQuery.of(context).size.width,
+                          fit: BoxFit.fill,
+                        ),
+                        SizedBox(height: 40.0),
+                        Text(
+                          contents[i].title,
+                          style: AppWidget.HeadLineTextFieldStyle(),
+                        ),
+                        SizedBox(height: 20.0),
+                        Text(
+                          contents[i].description,
+                          style: AppWidget.LightTextFieldStyle(),
+                        )
+                      ],
+                    ),
                   ),
                 );
               },
@@ -72,7 +74,7 @@ class _OnboardState extends State<Onboard> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: List.generate(
                 contents.length,
-                    (index) => buildDot(index, context),
+                (index) => buildDot(index, context),
               ),
             ),
           ),
@@ -91,14 +93,19 @@ class _OnboardState extends State<Onboard> {
               }
             },
             child: Container(
-              decoration: BoxDecoration(color: Colors.indigo, borderRadius: BorderRadius.circular(20)),
+              decoration: BoxDecoration(
+                  color: Colors.indigo,
+                  borderRadius: BorderRadius.circular(20)),
               height: 60,
               margin: EdgeInsets.all(40),
               width: double.infinity,
               child: Center(
                 child: Text(
                   currentIndex == contents.length - 1 ? "Start" : "Next",
-                  style: TextStyle(color: Colors.white, fontSize: 20.0, fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.bold),
                 ),
               ),
             ),
