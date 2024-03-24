@@ -8,8 +8,7 @@ import '../widgets/hero_card.dart';
 import 'login_screen.dart';
 
 import 'package:expense_wise/Screens/setgoal.dart';
-//ignore_for_file: prefer_const_constructors
-//ignore_for_file: prefer_const_literals_to_create_immutables
+
 
 class HomeScreen extends StatefulWidget {
 
@@ -20,12 +19,41 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  
+  String name = 'User';
   var isLogoutLoading = false;
 
 
   //Dynimically Name Fetching
 
+  Future<void> getthesharedpref() async {
+    try {
+      // Get the profile image URL from shared preferences
+      String? imageUrl = await SharedPreferenceHelper.getUserProfile();
+
+
+      // Get the authenticated user
+      User? user = FirebaseAuth.instance.currentUser;
+      if (user != null) {
+        // Get the user document from Firestore using the user's UID
+        DocumentSnapshot userDoc =
+        await FirebaseFirestore.instance.collection('users').doc(user.uid).get();
+
+        // get name from the user document
+        if (userDoc.exists) {
+          name = userDoc['username'];
+
+          setState(() {});
+        } else {
+          print('User document does not exist');
+
+        }
+      }
+    } catch (e) {
+
+      print("Error fetching user data: $e");
+
+    }
+  }
 
 
   logOut() async {
@@ -61,14 +89,14 @@ class _HomeScreenState extends State<HomeScreen> {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: Text('Add Your Goals'), // Customize the title as needed
-          content: GoalPage(), // Use GoalPage widget here or any custom widget for goal setting
+          title: Text('Add Your Goals'),
+          content: GoalPage(),
           actions: <Widget>[
             TextButton(
               onPressed: () {
-                Navigator.pop(context); // Close the dialog
+                Navigator.pop(context);
               },
-              child: Text('Close'), // Customize the button text as needed
+              child: Text('Close'),
             ),
           ],
         );
@@ -76,7 +104,12 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  
+  @override
+  void initState() {
+    super.initState();
+    getthesharedpref();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -93,7 +126,7 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         backgroundColor: Color.fromARGB(255, 34, 34, 40),
         title: Text(
-          "Hi,",
+          "Hi, $name",
           style: TextStyle(color: Colors.white),
         ),
         actions: [
